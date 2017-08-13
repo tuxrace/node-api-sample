@@ -5,18 +5,18 @@ const router = express.Router()
 const key = '3h9xgo4w'
 
 function verify(req, res, next){
-  if (req.query.key === '3h9xgo4w')
+  console.log(req.get('Authorization'))
+  if (req.get('Authorization') === 'Bearer : 3h9xgo4w')
     next()
   else
-    res.status(400).send('Not Authorized')
+    res.status(400).json('Not Authorized')
 }
-app.use(verify)
+
 app.use(cors())
+app.use(verify)
 app.use('/', router)
 
-router.options('*', cors())
-
-router.get('/', cors(), (req, res) => {  
+router.get('/', (req, res) => {
   res.json('ok')
 })
 
