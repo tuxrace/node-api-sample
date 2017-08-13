@@ -5,13 +5,13 @@ const router = express.Router()
 const key = '3h9xgo4w'
 
 function verify(req, res, next){
-  console.log('inn')
   if (req.query.key === '3h9xgo4w')
     next()
-  res.status(400).send('not authorized')
+  else
+    res.status(400).send('Not Authorized')
 }
 app.use(verify)
-//app.use(cors())
+app.use(cors())
 app.use('/', router)
 
 router.options('*', cors()) 
