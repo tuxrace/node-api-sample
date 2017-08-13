@@ -14,7 +14,7 @@ app.use(verify)
 app.use(cors())
 app.use('/', router)
 
-router.options('*', cors()) 
+router.options('*', cors())
 
 router.get('/', cors(), (req, res) => {  
   res.json('ok')
